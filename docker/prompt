@@ -1,0 +1,9 @@
+#!/bin/bash
+
+Off="\[\033[0m\]"
+Cyan="\[\033[36m\]"
+
+if [ "${DOCKER_HOST-}" ]; then
+    host=$(echo ${DOCKER_HOST} | sed -e 's/^tcp:\/\///g' -e 's/:.*$//g')
+    echo "${Cyan}[🐳 ${host}]${Off} "
+fi

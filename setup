@@ -1,0 +1,12 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+__set_prompt() {
+    unset PS1
+    for f in ${DIR}/*/prompt; do
+        PS1="${PS1}$(. ${f})"
+    done
+}
+
+PROMPT_COMMAND=__set_prompt
