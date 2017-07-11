@@ -1,3 +1,4 @@
 #!/bin/bash
 
-echo "➡ \w$ "
+# can't start with an emoji https://gitlab.com/gnachman/iterm2/issues/5909
+echo "} \w$ "
