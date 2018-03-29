@@ -10,3 +10,7 @@ __set_prompt() {
 }
 
 PROMPT_COMMAND=__set_prompt
+
+for f in ${__TOOLS_ROOT}/*/tools; do
+    . ${f}
+done

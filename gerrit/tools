@@ -1,0 +1,20 @@
+#!/bin/bash
+
+gerrit_logs() {
+    dir=$1
+    base=$2
+
+    if [ -z "${dir}" ] || [ -z "${base}" ];  then
+        echo "WHOA... Usage is gerrit_logs <dir> <base url>"
+        return 1
+    fi
+
+    if [ "${base: -1}" != "/" ]; then
+        base=${base}/
+    fi
+
+    dirCount=$(($(awk -F"/" '{print NF-1}' <<< "${base}") - 3))
+
+    mkdir -p ${dir}
+    (cd ${dir} && wget -r -np -nH --cut-dirs=${dirCount} --level=99 -R 'index.html*' ${base})
+}

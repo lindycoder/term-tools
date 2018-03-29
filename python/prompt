@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if [ "${VIRTUAL_ENV-}" ]; then
+    venv=$(basename ${VIRTUAL_ENV})
+    echo "[🐍 ${venv}] "
+fi
