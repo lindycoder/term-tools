@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+python_version_diff() {
+    project=$1
+    from=$2
+    to=$3
+
+    PYTHON_VERSION=${PYTHON_VERSION-"python3"}
+    DIFF_TOOL=${DIFF_TOOL-"idea diff"}
+
+    dir=$(mktemp -d)
+
+    (cd ${dir} && \
+        virtualenv venv_from --python ${PYTHON_VERSION} && \
+        venv_from/bin/pip install "${project}==${from}")
+
+    (cd ${dir} && \
+        virtualenv venv_to --python ${PYTHON_VERSION} && \
+        venv_to/bin/pip install "${project}==${to}")
+
+    ${DIFF_TOOL} ${dir}/venv_from/lib ${dir}/venv_to/lib
+}

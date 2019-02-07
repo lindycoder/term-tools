@@ -1,0 +1,6 @@
+#!/bin/bash
+
+clear_local_branches() {
+    git checkout master
+    git branch | grep -ve " master$" | xargs git branch -D
+}
