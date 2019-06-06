@@ -20,3 +20,9 @@ python_version_diff() {
 
     ${DIFF_TOOL} ${dir}/venv_from/lib ${dir}/venv_to/lib
 }
+
+use_tox() {
+    venv=$1
+
+    source .tox/${venv}/bin/activate
+}

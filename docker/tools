@@ -4,3 +4,7 @@ docker_host() {
     host=$1
     export DOCKER_HOST=tcp://${host}:2375
 }
+
+docker_kill_all () {
+    docker kill $(docker ps -q)
+}
