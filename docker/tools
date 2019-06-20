@@ -5,6 +5,6 @@ docker_host() {
     export DOCKER_HOST=tcp://${host}:2375
 }
 
-docker_kill_all () {
-    docker kill $(docker ps -q)
+docker_wipe() {
+    docker rm -f $(docker ps -q)
 }

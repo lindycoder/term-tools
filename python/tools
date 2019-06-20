@@ -26,3 +26,10 @@ use_tox() {
 
     source .tox/${venv}/bin/activate
 }
+
+tox_pip() {
+    venv=$1
+    shift
+
+    .tox/${venv}/bin/pip $@
+}
